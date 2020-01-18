@@ -286,6 +286,7 @@ class Wave
             $chunk->setExtensionSize($extensionSize);
         }
         if ($size >= 20) {
+	    $extensionSize = current(unpack('v', fread($fh, 2)));
             $extensionData = fread($fh, $extensionSize);
             $chunk->setExtensionData($extensionData);
         }
